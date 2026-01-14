@@ -4,6 +4,11 @@ public class Game {
     private Choice computerChoice;
     private int playerScore;
     private int computerScore;
+    private int maxRounds;
+
+    public Game(int maxRounds){
+        this.maxRounds = maxRounds;
+    }
 
     public Result playRound(Choice playerChoice){
 
@@ -32,5 +37,18 @@ public class Game {
 
     public Choice getComputerChoice() {
         return computerChoice;
+    }
+
+    public boolean isGameOver(){
+        return playerScore == maxRounds -1 || computerScore == maxRounds -1;
+    }
+
+    public boolean didPlayerWin(){
+        return playerScore == maxRounds -1;
+    }
+
+    public void reset(){
+        this.playerScore = 0;
+        this.computerScore = 0;
     }
 }

@@ -14,6 +14,16 @@ public class GameController {
 
         while(true){
 
+            if(game.isGameOver()){
+                if(view.displayGameWinner(game.didPlayerWin())){
+                  game.reset();
+                  continue;
+                }
+                else{
+                    break;
+                }
+            }
+
             Choice playerChoice = view.getPlayerChoice();
             if(playerChoice == null){
                 break;
@@ -28,7 +38,7 @@ public class GameController {
     }
 
     static void main() {
-        Game game = new Game();
+        Game game = new Game(3);
         IView view = new ConsoleView();
         GameController controller = new GameController(game, view);
         controller.startGame();
