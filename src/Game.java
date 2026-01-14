@@ -4,8 +4,21 @@ public class Game {
     private int playerScore;
     private int computerScore;
 
-    public Result playRound(Choice choice){
-        return null;
+    public Result playRound(Choice playerChoice){
+
+        Choice computerChoice = computerPlayer.makeMove();
+
+        if(playerChoice == computerChoice){
+            return Result.TIE;
+        }
+        if(playerChoice.beats(computerChoice)){
+            playerScore++;
+            return Result.WIN;
+        }
+        else {
+            computerScore++;
+            return Result.LOSE;
+        }
     }
 
     public int getPlayerScore() {
