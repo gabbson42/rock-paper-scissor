@@ -1,12 +1,13 @@
 public class Game {
 
-    private ComputerPlayer computerPlayer;
+    private ComputerPlayer computerPlayer = new ComputerPlayer();
+    private Choice computerChoice;
     private int playerScore;
     private int computerScore;
 
     public Result playRound(Choice playerChoice){
 
-        Choice computerChoice = computerPlayer.makeMove();
+        this.computerChoice = computerPlayer.makeMove();
 
         if(playerChoice == computerChoice){
             return Result.TIE;
@@ -27,5 +28,9 @@ public class Game {
 
     public int getComputerScore() {
         return computerScore;
+    }
+
+    public Choice getComputerChoice() {
+        return computerChoice;
     }
 }

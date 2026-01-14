@@ -5,7 +5,7 @@ public class ComputerPlayer {
     public Choice makeMove(){
 
         Random random = new Random();
-        int randomNumber = random.nextInt(1,3);
+        int randomNumber = random.nextInt(1,4);
 
         switch(randomNumber){
             case 1 -> {
