@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ConsoleView implements IView{
 
-    Scanner input = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
     @Override
     public void displayWelcome() {
