@@ -70,7 +70,6 @@ public class ConsoleView implements IView{
                 displayError();
             }
         }
-
     }
 
     @Override

@@ -6,22 +6,21 @@ public class Game {
     private int computerScore;
     private int maxRounds;
 
-    public Game(int maxRounds){
+    public Game(int maxRounds) {
         this.maxRounds = maxRounds;
     }
 
-    public Result playRound(Choice playerChoice){
+    public Result playRound(Choice playerChoice) {
 
         this.computerChoice = computerPlayer.makeMove();
 
-        if(playerChoice == computerChoice){
+        if (playerChoice == computerChoice) {
             return Result.TIE;
         }
-        if(playerChoice.beats(computerChoice)){
+        if (playerChoice.beats(computerChoice)) {
             playerScore++;
             return Result.WIN;
-        }
-        else {
+        } else {
             computerScore++;
             return Result.LOSE;
         }
@@ -39,15 +38,15 @@ public class Game {
         return computerChoice;
     }
 
-    public boolean isGameOver(){
-        return playerScore == maxRounds -1 || computerScore == maxRounds -1;
+    public boolean isGameOver() {
+        return playerScore == maxRounds / 2 + 1 || computerScore == maxRounds / 2 + 1;
     }
 
-    public boolean didPlayerWin(){
-        return playerScore == maxRounds -1;
+    public boolean didPlayerWin() {
+        return playerScore == maxRounds / 2 + 1;
     }
 
-    public void reset(){
+    public void reset() {
         this.playerScore = 0;
         this.computerScore = 0;
     }
