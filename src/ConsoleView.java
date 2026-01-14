@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class ConsoleView implements IView{
 
+    Scanner input = new Scanner(System.in);
+
     @Override
     public void displayWelcome() {
         IO.println("Welcome to the ROCK, PAPER, SCISSORS Game!\n");
@@ -31,8 +33,6 @@ public class ConsoleView implements IView{
     @Override
     public Choice getPlayerChoice() {
 
-        Scanner input = new Scanner(System.in);
-
         while(true) {
             IO.println("Choose your weapon with the corresponding number! Type 0 to exit anytime." +
                     "\n ROCK(1), PAPER(2) OR SCISSOR(3)?");
@@ -50,6 +50,27 @@ public class ConsoleView implements IView{
                 displayError();
             }
         }
+    }
+
+    @Override
+    public boolean displayGameWinner(boolean playerWon){
+
+        while(true) {
+            if (playerWon) {
+                IO.println("You won the game! Want to play again? (y/n)");
+            } else {
+                IO.println("You lost the game! Want to play again? (y/n)");
+            }
+
+            String choice = input.next();
+
+            if (choice.equalsIgnoreCase("y")) return true;
+            if (choice.equalsIgnoreCase("n")) return false;
+            else{
+                displayError();
+            }
+        }
+
     }
 
     @Override
