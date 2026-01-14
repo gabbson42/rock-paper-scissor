@@ -2,9 +2,10 @@ import java.util.Random;
 
 public class ComputerPlayer {
 
+    private Random random = new Random();
+
     public Choice makeMove(){
 
-        Random random = new Random();
         int randomNumber = random.nextInt(1,4);
 
         switch(randomNumber){
@@ -15,9 +16,9 @@ public class ComputerPlayer {
                 return Choice.PAPER;
             }
             case 3 -> {
-                return Choice.SCISSOR;
+                return Choice.SCISSORS;
             }
+            default -> throw new IllegalStateException("Unexpected value: " + randomNumber);
         }
-        return null;
     }
 }

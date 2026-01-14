@@ -6,6 +6,6 @@ public interface IView {
     void displayChoice(Choice playerChoice, Choice computerChoice);
     Choice getPlayerChoice();
     boolean displayGameWinner(boolean playerWon);
-    void displayError();
     void displayGoodbye();
+    void close();
 }

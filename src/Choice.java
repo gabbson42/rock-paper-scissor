@@ -2,13 +2,13 @@ public enum Choice {
 
     ROCK,
     PAPER,
-    SCISSOR;
+    SCISSORS;
 
     public boolean beats(Choice other){
 
-        if (this == ROCK && other == SCISSOR) return true;
+        if (this == ROCK && other == SCISSORS) return true;
         if (this == PAPER && other == ROCK) return true;
-        if (this == SCISSOR && other == PAPER) return true;
+        if (this == SCISSORS && other == PAPER) return true;
         return false;
     }
 }

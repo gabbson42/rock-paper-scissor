@@ -35,6 +35,7 @@ public class GameController {
         }
 
         view.displayGoodbye();
+        view.close();
     }
 
     static void main() {

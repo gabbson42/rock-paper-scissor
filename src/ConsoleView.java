@@ -40,7 +40,7 @@ public class ConsoleView implements IView{
                 int choice = input.nextInt();
                 if (choice == 1) return Choice.ROCK;
                 if (choice == 2) return Choice.PAPER;
-                if (choice == 3) return Choice.SCISSOR;
+                if (choice == 3) return Choice.SCISSORS;
                 if (choice == 0) return null;
                 else{
                     displayError();
@@ -72,13 +72,17 @@ public class ConsoleView implements IView{
         }
     }
 
-    @Override
-    public void displayError() {
+    private void displayError() {
         IO.println("Wrong input detected, try again!");
     }
 
     @Override
     public void displayGoodbye(){
         IO.println("Have a good day and welcome back another time!");
+    }
+
+    @Override
+    public void close() {
+        input.close();
     }
 }
