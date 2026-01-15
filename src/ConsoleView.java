@@ -11,6 +11,55 @@ public class ConsoleView implements IView{
     }
 
     @Override
+    public String displayMenu() {
+
+        while(true) {
+            IO.println("1. Play" +
+                    "\n2. Show Rules" +
+                    "\n3. Show Credits" +
+                    "\n0. Exit");
+            try {
+                int choice = input.nextInt();
+                input.nextLine();
+
+                if (choice == 1) return "play";
+                if (choice == 2) return "rules";
+                if (choice == 3) return "credits";
+                if (choice == 0) return "exit";
+                else {
+                    displayError();
+                }
+            } catch (InputMismatchException e) {
+                displayError();
+            }
+        }
+    }
+
+    @Override
+    public void displayRules() {
+
+        IO.println("Pick a \"tool\" between ROCK, PAPER OR SCISSORS and duke it out against the computer." +
+                "\nROCK beats SCISSORS, PAPER beats ROCK and SCISSORS beat PAPER." +
+                "\nPress enter to go back to the menu.");
+        IO.println();
+
+        input.nextLine();
+    }
+
+    @Override
+    public void displayCredits() {
+
+        IO.println("Game made by:" +
+                "\nGabriel Landvik Åkerman" +
+                "\nGuido Roos" +
+                "\nSimon Fredholm" +
+                "\nPress enter to go back to the menu.");
+        IO.println();
+        input.nextLine();
+    }
+
+
+    @Override
     public void displayResult(Result result) {
 
         if (result == Result.WIN) IO.println("You win this round!");

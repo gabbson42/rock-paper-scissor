@@ -8,30 +8,43 @@ public class GameController {
         this.view = view;
     }
 
-    public void startGame(){
+    public void runGame(){
 
         view.displayWelcome();
+        String choice;
 
-        while(true){
+        while(true) {
+            choice = view.displayMenu();
 
-            if(game.isGameOver()){
-                if(view.displayGameWinner(game.didPlayerWin())){
-                  game.reset();
-                  continue;
+            if(choice.equalsIgnoreCase("play")) {
+                while(true){
+
+                    if(game.isGameOver()){
+                        if(view.displayGameWinner(game.didPlayerWin())){
+                            game.reset();
+                            continue;
+                        }
+                        else{
+                            game.reset();
+                            break;
+                        }
+                    }
+
+                    Choice playerChoice = view.getPlayerChoice();
+                    if(playerChoice == null){
+                        game.reset();
+                        break;
+                    }
+                    Result roundResult = game.playRound(playerChoice);
+                    view.displayChoice(playerChoice, game.getComputerChoice());
+                    view.displayResult(roundResult);
+                    view.displayScore(game.getPlayerScore(), game.getComputerScore());
                 }
-                else{
-                    break;
-                }
-            }
 
-            Choice playerChoice = view.getPlayerChoice();
-            if(playerChoice == null){
-                break;
             }
-            Result roundResult = game.playRound(playerChoice);
-            view.displayChoice(playerChoice, game.getComputerChoice());
-            view.displayResult(roundResult);
-            view.displayScore(game.getPlayerScore(), game.getComputerScore());
+            if(choice.equalsIgnoreCase("rules")) view.displayRules();
+            if(choice.equalsIgnoreCase("credits")) view.displayCredits();
+            if(choice.equalsIgnoreCase("exit")) break;
         }
 
         view.displayGoodbye();
@@ -42,6 +55,6 @@ public class GameController {
         Game game = new Game(3);
         IView view = new ConsoleView();
         GameController controller = new GameController(game, view);
-        controller.startGame();
+        controller.runGame();
     }
 }

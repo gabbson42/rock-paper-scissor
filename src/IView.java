@@ -1,6 +1,9 @@
 public interface IView {
 
     void displayWelcome();
+    String displayMenu();
+    void displayRules();
+    void displayCredits();
     void displayResult(Result result);
     void displayScore(int playerScore, int computerScore);
     void displayChoice(Choice playerChoice, Choice computerChoice);

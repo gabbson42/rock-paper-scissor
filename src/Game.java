@@ -4,10 +4,10 @@ public class Game {
     private Choice computerChoice;
     private int playerScore;
     private int computerScore;
-    private int maxWins;
+    private int bestOf;
 
-    public Game(int maxWins) {
-        this.maxWins = maxWins;
+    public Game(int bestOf) {
+        this.bestOf = bestOf;
     }
 
     public Result playRound(Choice playerChoice) {
@@ -39,12 +39,12 @@ public class Game {
     }
 
     public boolean isGameOver() {
-        int winsNeeded = maxWins / 2 + 1;
+        int winsNeeded = bestOf / 2 + 1;
         return playerScore == winsNeeded || computerScore == winsNeeded;
     }
 
     public boolean didPlayerWin() {
-        return playerScore == maxWins / 2 + 1;
+        return playerScore == bestOf / 2 + 1;
     }
 
     public void reset() {
